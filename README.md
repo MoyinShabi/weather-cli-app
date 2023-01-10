@@ -3,6 +3,6 @@
 
 
 
-Sample:
+Screenshot:
 
-![Terminal](screenshots\weather_cli_app_terminal.png)
+![Terminal](/screenshots/weather_cli_app_terminal.png)

@@ -40,7 +40,7 @@ class WeatherApiClient {
     /* Extracting the Location ID from the response data (locationResponse) 
    if the status code is `200`: */
     final locationJson =
-        jsonDecode(locationResponse.body) as Map<String, Object?>;
+        jsonDecode(locationResponse.body) as Map<String, dynamic>;
     /* What the `jsonDecode()` function does is to take the response
     body, which is some JSON data (Map) as a `String`, and convert it 
     to a Dart JSON object (Map) that we can use to retrieve the data we need.*/
@@ -77,21 +77,7 @@ class WeatherApiClient {
 
     // Parsing the String to a JSON object:
     final weatherJson =
-        jsonDecode(weatherResponse.body) as Map<String, Object?>;
-
-    // Getting the needed weather info:
-    final weather = weatherJson['weather'] as List;
-    // Because the value of the key, `'weather'` is a `List` of a `Map`
-    final weatherDescription = weather.first as Map<String, Object?>;
-
-    final mainInfo = weatherJson['main'] as Map<String, Object?>;
-    final cityName = weatherJson['name'] as String;
-
-    final requiredWeatherData = <String, Object?>{
-      'weather_description': weatherDescription,
-      'temp_info': mainInfo,
-      'city': cityName,
-    };
+        jsonDecode(weatherResponse.body) as Map<String, dynamic>;
 
     // Error handling:
     if (weatherJson.isEmpty) {
@@ -100,7 +86,8 @@ class WeatherApiClient {
     }
 
     // Passing the weather JSON data as an argument:
-    return Weather.fromJson(requiredWeatherData);
+    // return Weather.fromJson(requiredWeatherData);
+    return Weather.fromJson(weatherJson);
   }
 
   // Method to finally get the weather from both results:

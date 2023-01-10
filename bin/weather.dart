@@ -19,20 +19,15 @@ class Weather {
   });
 
 // Factory constructor to parse JSON data from the Weather API server:
-  factory Weather.fromJson(Map<String, Object?> json) {
-    final weatherDescriptionData =
-        json['weather_description'] as Map<String, Object?>;
-
-    final tempData = json['temp_info'] as Map<String, Object?>;
-
+  factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
-      cityName: json['city'] as String,
-      weatherState: weatherDescriptionData['main'] as String,
-      weatherDescription: weatherDescriptionData['description'] as String,
-      temp: tempData['temp'] as double,
-      feel: tempData['feels_like'] as double,
-      maxTemp: tempData['temp_max'] as double,
-      minTemp: tempData['temp_min'] as double,
+      cityName: json['name'] as String,
+      weatherState: json['weather'][0]['main'] as String,
+      weatherDescription: json['weather'][0]['description'] as String,
+      temp: json['main']['temp'] as double,
+      feel: json['main']['feels_like'] as double,
+      maxTemp: json['main']['temp_max'] as double,
+      minTemp: json['main']['temp_min'] as double,
     );
   }
 

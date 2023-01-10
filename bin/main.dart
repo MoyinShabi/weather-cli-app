@@ -2,30 +2,44 @@ import 'dart:io';
 
 import 'weather_api_client.dart';
 
-Future<void> main(List<String> argument) async {
-  if (argument.length != 1) {
-    print('Syntax: dart bin/main.dart <city>');
-    return;
-  }
-  final city = argument.first;
+Future<void> main() async {
+  print('''
+COMMAND-LINE WEATHER APP
+  Enter "q" to quit
+  ''');
 
-  // Creating an API client (an instance of the `WeatherApiClient` model class):
-  final api = WeatherApiClient();
+  while (true) {
+    // Collecting user input:
+    stdout.write("Enter a city: ");
+    final city = stdin.readLineSync();
 
-  // final locationId = await api.getLocationId(city);
-  // print(locationId);
+    if (city == "q") {
+      print("Quitting...");
+      break;
+    }
 
-  // Error Handling:
-  try {
-    final weather = await api.getWeather(city);
-    print(weather);
-  } on WeatherApiException catch (e) {
-    print(e.message);
-  } on SocketException catch (_) {
-    // This makes it explicit that we are only catching exceptions of this type
-    print('Could not fetch data. Check your internet connection.');
-  } catch (e) {
-    print(e);
+    if (city.runtimeType != String) {
+      print("Invalid!");
+    }
+
+    // Creating an API client (an instance of the `WeatherApiClient` model class):
+    final api = WeatherApiClient();
+
+    // final locationId = await api.getLocationId(city);
+    // print(locationId);
+
+    // Error Handling:
+    try {
+      final weather = await api.getWeather(city!);
+      print(weather);
+    } on WeatherApiException catch (e) {
+      print(e.message);
+    } on SocketException catch (_) {
+      // This makes it explicit that we are only catching exceptions of this type
+      print('Could not fetch data. Check your internet connection.');
+    } catch (e) {
+      print(e);
+    }
   }
 
   /*

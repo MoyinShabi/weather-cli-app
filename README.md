@@ -1,8 +1,9 @@
 ## A simple command-line weather application 
 
+<!-- ### Features:
 
 
 
-Screenshot:
+Screenshot: -->
 
-![Terminal](/screenshots/weather_cli_app_terminal.png)
+<!-- ![Terminal](/screenshots/weather_cli_app_terminal.png) -->

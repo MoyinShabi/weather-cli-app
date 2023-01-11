@@ -24,10 +24,10 @@ class Weather {
       cityName: json['name'] as String,
       weatherState: json['weather'][0]['main'] as String,
       weatherDescription: json['weather'][0]['description'] as String,
-      temp: json['main']['temp'] as double,
-      feel: json['main']['feels_like'] as double,
-      maxTemp: json['main']['temp_max'] as double,
-      minTemp: json['main']['temp_min'] as double,
+      temp: json['main']['temp'].toDouble(),
+      feel: json['main']['feels_like'].toDouble(),
+      maxTemp: json['main']['temp_max'].toDouble(),
+      minTemp: json['main']['temp_min'].toDouble(),
     );
   }
 

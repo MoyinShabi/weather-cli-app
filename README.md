@@ -1,4 +1,4 @@
-## A simple command-line weather application using the free OpenWeatherMap Current Weather API 
+### A simple command-line weather application using the free OpenWeatherMap Current Weather API 
 
 <!-- ### Features: -->
 

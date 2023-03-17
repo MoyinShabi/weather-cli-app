@@ -20,7 +20,7 @@ class WeatherApiClient {
   // Method to request (make an API call) for the Location ID (an integer) of a city:
   Future<int> getLocationId(String city) async {
     final locationUrl = Uri.parse(
-        '$baseUrl?q=$city&appid=883b470dbb34979476b0ffb3031ec25a&units=metric');
+        '$baseUrl?q=$city&appid={your-own-api-key}&units=metric');
     /* Location url to get data from the API. Converting the string
     literal into a `Uri` object that will be used to make a request with 
     the "http" package. */
@@ -61,7 +61,7 @@ class WeatherApiClient {
   Future<Weather> fetchWeather(int locationId) async {
     // Parsing the Url to a Uri object:
     final weatherUrl = Uri.parse(
-        '$baseUrl?id=$locationId&appid=883b470dbb34979476b0ffb3031ec25a&units=metric');
+        '$baseUrl?id=$locationId&appid={your-own-api-key}&units=metric');
 
     // Getting the response data from the server:
     final weatherResponse = await http.get(weatherUrl);
